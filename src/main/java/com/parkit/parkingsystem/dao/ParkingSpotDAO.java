@@ -38,7 +38,6 @@ public class ParkingSpotDAO {
     }
 
     public boolean updateParking(ParkingSpot parkingSpot){
-        //update the availability for that parking slot
         Connection con = null;
         try {
             con = dataBaseConfig.getConnection();

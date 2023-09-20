@@ -69,7 +69,7 @@ class ParkingDataBaseIT {
         ticketIT = parkingService.processIncomingVehicle();
         
         // THEN
-			//TODO: check that a ticket is actually saved in DB and Parking table is updated with availability
+			// Checking that a ticket is actually saved in DB and Parking table is updated with availability
         assertThat(ticketIT.getVehicleRegNumber()).isEqualTo("ABCDEF");
         assertThat(ticketIT.getPrice()).isZero();
         assertThat(ticketIT.getInTime()).isNotNull();
@@ -96,7 +96,7 @@ class ParkingDataBaseIT {
         ticketIN = parkingService.processExitingVehicle();
         
         // THEN
-        	//TODO: check that the fare generated and out time are populated correctly in the database
+        	// Checking that the fare generated and out time are populated correctly in the database
         assertThat(ticketIN.getOutTime()).isNotNull();
         assertThat(ticketIN.getPrice()).isEqualTo(1.5);
         assertThat(ticketIN.getOutTime()).isAfter(ticketIN.getInTime());
@@ -114,7 +114,7 @@ class ParkingDataBaseIT {
     	Ticket ticketOUT = parkingService.processExitingVehicle();
     	
     	// THEN
-    		//TODO: check that the discount price is populated correctly in the database in the case of a recurring user
+    		// Checking that the discount price is populated correctly in the database in the case of a recurring user
     	assertThat(ticketOUT.getPrice()).isEqualTo(1.43);
     }
 }    

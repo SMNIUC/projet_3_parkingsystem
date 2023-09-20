@@ -64,10 +64,12 @@ class FareCalculatorServiceTest {
     }
 
     @Test
-    void calculateFareUnkownType() {
+    void calculateFareUnknownType() {
+    	// Unknown FareType should throw a NullPointerException
+    	
     	// GIVEN
         Date inTime = new Date();
-        inTime.setTime( System.currentTimeMillis() - ( 60 * 60 * 1000 ) );
+        inTime.setTime( System.currentTimeMillis() - ( 60 * 60 * 1000 ) ); 
         Date outTime = new Date();
         ParkingSpot parkingSpot = new ParkingSpot(1, null,false);
 
@@ -82,9 +84,11 @@ class FareCalculatorServiceTest {
 
     @Test
     void calculateFareBikeWithFutureInTime() {
+    	// Error in InTime should throw an IllegalArgumentException
+    	
     	// GIVEN
         Date inTime = new Date();
-        inTime.setTime( System.currentTimeMillis() + ( 60 * 60 * 1000 ) );
+        inTime.setTime( System.currentTimeMillis() + ( 60 * 60 * 1000 ) ); 
         Date outTime = new Date();
         ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.BIKE,false);
 
@@ -99,9 +103,11 @@ class FareCalculatorServiceTest {
 
     @Test
     void calculateFareBikeWithLessThanOneHourParkingTime() {
+    	// 45 minutes parking time should give 3/4th bike parking fare
+    	
     	// GIVEN
         Date inTime = new Date();
-        inTime.setTime( System.currentTimeMillis() - ( 45 * 60 * 1000 ) );//45 minutes parking time should give 3/4th parking fare
+        inTime.setTime( System.currentTimeMillis() - ( 45 * 60 * 1000 ) );
         Date outTime = new Date();
         ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.BIKE,false);
 
@@ -117,9 +123,11 @@ class FareCalculatorServiceTest {
 
     @Test
     void calculateFareCarWithLessThanOneHourParkingTime() {
+    	// 45 minutes parking time should give 3/4th car parking fare
+    	
     	// GIVEN
         Date inTime = new Date();
-        inTime.setTime( System.currentTimeMillis() - ( 45 * 60 * 1000 ) );//45 minutes parking time should give 3/4th parking fare
+        inTime.setTime( System.currentTimeMillis() - ( 45 * 60 * 1000 ) );
         Date outTime = new Date();
         ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.CAR,false);
 
@@ -135,9 +143,11 @@ class FareCalculatorServiceTest {
 
     @Test
     void calculateFareCarWithMoreThanADayParkingTime() {
+    	// 24 hours parking time should give 24 * car parking fare per hour
+    	
     	// GIVEN
         Date inTime = new Date();
-        inTime.setTime( System.currentTimeMillis() - ( 24 * 60 * 60 * 1000 ) );//24 hours parking time should give 24 * parking fare per hour
+        inTime.setTime( System.currentTimeMillis() - ( 24 * 60 * 60 * 1000 ) );
         Date outTime = new Date();
         ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.CAR,false);
 
@@ -153,9 +163,11 @@ class FareCalculatorServiceTest {
     
     @Test
     void calculateFareCarWithLessThan30minutesParkingTime() {
+    	// Less than 30 minutes of parking time should be free
+    	
     	// GIVEN
     	Date inTime = new Date();
-        inTime.setTime( System.currentTimeMillis() - ( 30 * 60 * 1000 ) );//Less than 30 minutes of parking time should be free
+        inTime.setTime( System.currentTimeMillis() - ( 30 * 60 * 1000 ) );
         Date outTime = new Date();
         ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.CAR,false);
         
@@ -171,9 +183,11 @@ class FareCalculatorServiceTest {
     
     @Test
     void calculateFareBikeWithLessThan30minutesParkingTime() {
+    	// Less than 30 minutes of parking time should be free
+    	
     	// GIVEN
     	Date inTime = new Date();
-        inTime.setTime( System.currentTimeMillis() - ( 30 * 60 * 1000 ) );//Less than 30 minutes of parking time should be free
+        inTime.setTime( System.currentTimeMillis() - ( 30 * 60 * 1000 ) );
         Date outTime = new Date();
         ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.BIKE,false);
         
@@ -189,9 +203,11 @@ class FareCalculatorServiceTest {
     
     @Test
     void calculateFareCarWithDiscount() {
+    	// Returning vehicles get a 5% discount
+    	
     	// GIVEN
     	Date inTime = new Date();
-        inTime.setTime( System.currentTimeMillis() - ( 60 * 60 * 1000 ) );//Less than 30 minutes of parking time should be free
+        inTime.setTime( System.currentTimeMillis() - ( 60 * 60 * 1000 ) );
         Date outTime = new Date();
         ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.CAR,false);
         
@@ -207,9 +223,11 @@ class FareCalculatorServiceTest {
     
     @Test
     void calculateFareBikeWithDiscount() {
+    	// Returning vehicles get a 5% discount
+    	
     	// GIVEN
     	Date inTime = new Date();
-        inTime.setTime( System.currentTimeMillis() - ( 60 * 60 * 1000 ) );//Less than 30 minutes of parking time should be free
+        inTime.setTime( System.currentTimeMillis() - ( 60 * 60 * 1000 ) );
         Date outTime = new Date();
         ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.BIKE,false);
         

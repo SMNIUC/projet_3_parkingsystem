@@ -59,7 +59,5 @@ public class Ticket {
     }
 
 	public void calculateFare(Ticket ticket, boolean b) {
-		// TODO Auto-generated method stub
-		
 	}
 }
